@@ -66,3 +66,9 @@ func (a *Api) StopTaskHandler(c *gin.Context) {
 
 	c.JSON(http.StatusNoContent, gin.H{})
 }
+
+func (a *Api) GetStatsHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"stats": a.Worker.Stats,
+	})
+}

@@ -23,9 +23,11 @@ func main() {
 		Queue: *queue.New(),
 		Db:    make(map[uuid.UUID]*task.Task),
 	}
+
 	api := worker.Api{Address: host, Port: port, Worker: &w}
 
 	go runTasks(&w)
+	go w.CollectStats()
 
 	api.Start()
 }
@@ -43,5 +45,4 @@ func runTasks(w *worker.Worker) {
 		log.Println("Sleeping for 10 seconds.")
 		time.Sleep(10 * time.Second)
 	}
-
 }
