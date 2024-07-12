@@ -64,7 +64,7 @@ type Task struct {
 }
 
 type TaskEvent struct {
-	Id        uuid.UUID
+	ID        uuid.UUID
 	State     State
 	Timestamp time.Time
 	Task      Task
